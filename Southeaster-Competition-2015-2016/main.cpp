@@ -7,9 +7,20 @@
 //
 
 #include <iostream>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+#include "Timer.h"
+int main(int argc, const char * argv[])
+{
+    PDP::DataStructures::Timer timer;
+    
+    timer.start();
+    
+    for (int n = 0; n<1000000; ++n )
+    {
+        
+    }
+    
+    timer.stop();
+    
+    std::cout << timer.getElapsedTime() << std::endl;
     return 0;
 }
