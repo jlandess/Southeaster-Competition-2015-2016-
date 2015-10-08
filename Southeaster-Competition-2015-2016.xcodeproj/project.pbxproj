@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C22DCE5A1BC61BDB00ECA5C8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C22DCE591BC61BDB00ECA5C8 /* main.cpp */; };
+		C22DCE621BC61BEA00ECA5C8 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C22DCE611BC61BEA00ECA5C8 /* Timer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		C22DCE561BC61BDB00ECA5C8 /* Southeaster-Competition-2015-2016 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Southeaster-Competition-2015-2016"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22DCE591BC61BDB00ECA5C8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C22DCE601BC61BEA00ECA5C8 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		C22DCE611BC61BEA00ECA5C8 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,8 @@
 		C22DCE581BC61BDB00ECA5C8 /* Southeaster-Competition-2015-2016 */ = {
 			isa = PBXGroup;
 			children = (
+				C22DCE601BC61BEA00ECA5C8 /* Timer.h */,
+				C22DCE611BC61BEA00ECA5C8 /* Timer.cpp */,
 				C22DCE591BC61BDB00ECA5C8 /* main.cpp */,
 			);
 			path = "Southeaster-Competition-2015-2016";
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C22DCE5A1BC61BDB00ECA5C8 /* main.cpp in Sources */,
+				C22DCE621BC61BEA00ECA5C8 /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
