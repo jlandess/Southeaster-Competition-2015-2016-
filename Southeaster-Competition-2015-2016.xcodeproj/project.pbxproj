@@ -28,6 +28,7 @@
 		C22DCE591BC61BDB00ECA5C8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C22DCE601BC61BEA00ECA5C8 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		C22DCE611BC61BEA00ECA5C8 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		C22DCE631BC829C900ECA5C8 /* Curve.cs */ = {isa = PBXFileReference; lastKnownFileType = text; path = Curve.cs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				C22DCE601BC61BEA00ECA5C8 /* Timer.h */,
+				C22DCE631BC829C900ECA5C8 /* Curve.cs */,
 				C22DCE611BC61BEA00ECA5C8 /* Timer.cpp */,
 				C22DCE591BC61BDB00ECA5C8 /* main.cpp */,
 			);
