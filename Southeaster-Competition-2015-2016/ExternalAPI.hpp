@@ -1,15 +1,11 @@
 //
-//  main.cpp
+//  ExternalAPI.hpp
 //  Robotics Navigation
 //
-//  Created by James Landess on 10/24/15.
 //
 
-#include <iostream>
-
-#include "Robot.hpp"
-#include "Navigator.hpp"
-
+#ifndef ExternalAPI_hpp
+#define ExternalAPI_hpp
 
 /*
  GNU GENERAL PUBLIC LICENSE
@@ -351,61 +347,43 @@
  library.  If this is what you want to do, use the GNU Lesser General
  Public License instead of this License.
  */
-int main(int argc, const char * argv[])
+
+extern "C"
 {
-    glm::vec2 originalReading(int(86.5),int(86.5));
+    //robot wrapper api
+    void * CreateRobot();
+    
+    void SetRobotLocation(void * robot, int x, int y);
+    
+    void SetRobotSpeed(void * robot, float speed);
     
     
-    Robotics::Robot currentRobot(originalReading);
+    void DeleteRobot(void * robot);
+    //matrix wrapper api
+    void * CreateMap(int width, int size);
+    
+    char AccessMap(void * map, int x, int y);
+    
+    int GetWidth(void * map);
+    int GetHeight(void * map);
+    
+    void SetMap(void * map,int x, int y, char character);
+    
+    void DeleteMap(void * map);
+    
+    //navigator wrapper api
     
     
-    currentRobot.SetSpeed(5);
+    void * CreateNavigator(void * map, void * robot);
     
-    glm::vec2 zoneA(18,81);
-    glm::vec2 zoneB(43,81);
-    glm::vec2 zoneC(76,81);
+    void SetDestination(void * navigator,int x, int y);
     
-    glm::vec2 binOne(18,37);
-    glm::vec2 binTwo(18,47);
-    glm::vec2 binThree(18,57);
-    glm::vec2 binFour(18,67);
-    
-    glm::vec2 dock(18,5);
-    
-    glm::vec2 tunnel(87,37);
-    
-    glm::vec2 truckDock(71,6);
-    
-    glm::vec2 mapDimensions({96,96});
-    
-    Robotics::Matrix<char> map(mapDimensions.x,mapDimensions.y);
+    void Step(void * navigator, float dt);
     
     
-    //assign the "walls"
-    glm::vec2 wall({80,96});
-    for (int n = 0; n<46; ++n )
-    {
-        map[wall.x][wall.y] = 1;
-        wall.y-=1;
-    }
-    
-    Robotics::Navigator currentNavigator(map,currentRobot);
-    
-    currentNavigator.SetDestination({14,0});
+    int HasMoreSteps(void * navigator);
     
     
-    while (currentNavigator.HasMoreSteps())
-    {
-        
-        currentNavigator.Step(0.11811);
-        
-        std::cout << currentRobot.GetCurrentLocation().x << "," << currentRobot.GetCurrentLocation().y << std::endl;
-    }
-    
-    
-
-    
-    
-
-    
+    void DeleteNavigator(void * navigator);
 }
+#endif /* ExternalAPI_hpp */

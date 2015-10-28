@@ -1,14 +1,16 @@
 //
-//  main.cpp
+//  Navigator.hpp
 //  Robotics Navigation
 //
-//  Created by James Landess on 10/24/15.
 //
 
-#include <iostream>
+#ifndef Navigator_hpp
+#define Navigator_hpp
 
 #include "Robot.hpp"
-#include "Navigator.hpp"
+#include "Matrix.h"
+#include "Bezier.h"
+#include "glm/glm.hpp"
 
 
 /*
@@ -351,61 +353,27 @@
  library.  If this is what you want to do, use the GNU Lesser General
  Public License instead of this License.
  */
-int main(int argc, const char * argv[])
+namespace Robotics
 {
-    glm::vec2 originalReading(int(86.5),int(86.5));
-    
-    
-    Robotics::Robot currentRobot(originalReading);
-    
-    
-    currentRobot.SetSpeed(5);
-    
-    glm::vec2 zoneA(18,81);
-    glm::vec2 zoneB(43,81);
-    glm::vec2 zoneC(76,81);
-    
-    glm::vec2 binOne(18,37);
-    glm::vec2 binTwo(18,47);
-    glm::vec2 binThree(18,57);
-    glm::vec2 binFour(18,67);
-    
-    glm::vec2 dock(18,5);
-    
-    glm::vec2 tunnel(87,37);
-    
-    glm::vec2 truckDock(71,6);
-    
-    glm::vec2 mapDimensions({96,96});
-    
-    Robotics::Matrix<char> map(mapDimensions.x,mapDimensions.y);
-    
-    
-    //assign the "walls"
-    glm::vec2 wall({80,96});
-    for (int n = 0; n<46; ++n )
+    class Navigator
     {
-        map[wall.x][wall.y] = 1;
-        wall.y-=1;
-    }
-    
-    Robotics::Navigator currentNavigator(map,currentRobot);
-    
-    currentNavigator.SetDestination({14,0});
-    
-    
-    while (currentNavigator.HasMoreSteps())
-    {
+    private:
+        Robotics::Matrix<char> & Map;
+        Robot & CurrentRobot;
+        //Physics::Bezier<float> Curve;
+        Robotics::Bezier<float> Curve;
+        float CurrentTime;
+        glm::vec2 Destination;
+    public:
         
-        currentNavigator.Step(0.11811);
+        Navigator(Robotics::Matrix<char> & map,  Robot & robot);
         
-        std::cout << currentRobot.GetCurrentLocation().x << "," << currentRobot.GetCurrentLocation().y << std::endl;
-    }
-    
-    
-
-    
-    
-
-    
+        void SetDestination(const glm::vec2 & destination);
+        
+        void Step(const float & dt);
+        
+        bool HasMoreSteps() const;
+    };
 }
+
+#endif /* Navigator_hpp */

@@ -1,14 +1,16 @@
 //
-//  main.cpp
-//  Robotics Navigation
+//  Matrix.h
+//  PathFinding
 //
-//  Created by James Landess on 10/24/15.
 //
 
-#include <iostream>
+#ifndef Matrix_h
+#define Matrix_h
 
-#include "Robot.hpp"
-#include "Navigator.hpp"
+//
+//  Matrix.h
+//  Foundation
+//
 
 
 /*
@@ -351,61 +353,82 @@
  library.  If this is what you want to do, use the GNU Lesser General
  Public License instead of this License.
  */
-int main(int argc, const char * argv[])
+
+#include <iostream>
+#include <vector>
+namespace Robotics
 {
-    glm::vec2 originalReading(int(86.5),int(86.5));
-    
-    
-    Robotics::Robot currentRobot(originalReading);
-    
-    
-    currentRobot.SetSpeed(5);
-    
-    glm::vec2 zoneA(18,81);
-    glm::vec2 zoneB(43,81);
-    glm::vec2 zoneC(76,81);
-    
-    glm::vec2 binOne(18,37);
-    glm::vec2 binTwo(18,47);
-    glm::vec2 binThree(18,57);
-    glm::vec2 binFour(18,67);
-    
-    glm::vec2 dock(18,5);
-    
-    glm::vec2 tunnel(87,37);
-    
-    glm::vec2 truckDock(71,6);
-    
-    glm::vec2 mapDimensions({96,96});
-    
-    Robotics::Matrix<char> map(mapDimensions.x,mapDimensions.y);
-    
-    
-    //assign the "walls"
-    glm::vec2 wall({80,96});
-    for (int n = 0; n<46; ++n )
+    template<class T> class Matrix
     {
-        map[wall.x][wall.y] = 1;
-        wall.y-=1;
-    }
-    
-    Robotics::Navigator currentNavigator(map,currentRobot);
-    
-    currentNavigator.SetDestination({14,0});
-    
-    
-    while (currentNavigator.HasMoreSteps())
-    {
+    private:
+        std::vector<std::vector<T>> InternalArray;
+    public:
+        Matrix()
+        {
+            
+        }
+        Matrix(const unsigned long width, const unsigned long height):InternalArray(width,std::vector<T>(height))
+        {
+            
+        }
+        std::vector<T> & operator[](const unsigned long index)
+        {
+            return this->InternalArray[index];
+        }
+        const std::vector<T> & operator[](const unsigned long index) const
+        {
+            return this->InternalArray[index];
+        }
+        void Resize(const long rows, const long cols)//resize the two dimentional array .
         
-        currentNavigator.Step(0.11811);
         
-        std::cout << currentRobot.GetCurrentLocation().x << "," << currentRobot.GetCurrentLocation().y << std::endl;
-    }
-    
-    
-
-    
-    
-
-    
+        {
+            this->InternalArray.resize(rows);
+            for(int i = 0;i < rows;++i) this->InternalArray[i].resize(cols);
+        }
+        
+        void Clear()
+        {
+            this->InternalArray.clear();
+            for(int i = 0;i < this->InternalArray.size();++i) this->InternalArray[i].clear();
+        }
+        unsigned long RowSize() const
+        {
+            return this->InternalArray[0].size();
+            
+        }
+        unsigned long ColumnSize() const
+        {
+            return this->InternalArray.size();
+        }
+        const std::vector<T> Linearize() const
+        {
+            std::vector<T> linearArray;
+            for (unsigned int x = 0; x<this->RowSize(); x++)
+            {
+                for(unsigned int y = 0;y<this->ColumnSize();y++)
+                {
+                    linearArray.push_back((*this)[x][y]);
+                }
+            }
+            return linearArray;
+        }
+        friend std::ostream &operator << (std::ostream & stream, const Matrix & matrice)
+        {
+            for (unsigned long n = 0; n<matrice.RowSize(); n++)
+            {
+                stream << "[";
+                for (unsigned long j  = 0; j<matrice.ColumnSize(); j++)
+                {
+                    stream<<  matrice[n][j] << "|";
+                }
+                stream << "]";
+                stream << std::endl;
+            }
+            
+            return stream;
+        }
+    };
 }
+
+#endif /* Matrix_h */

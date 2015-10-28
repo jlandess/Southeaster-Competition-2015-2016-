@@ -1,15 +1,16 @@
 //
-//  main.cpp
-//  Robotics Navigation
+//  RayTracing.h
+//  Foundation
 //
-//  Created by James Landess on 10/24/15.
 //
+
+#ifndef __Foundation__RayTracing__
+#define __Foundation__RayTracing__
 
 #include <iostream>
-
-#include "Robot.hpp"
-#include "Navigator.hpp"
-
+#include <vector>
+#include "Matrix.h"
+#include "glm/glm.hpp"
 
 /*
  GNU GENERAL PUBLIC LICENSE
@@ -351,61 +352,25 @@
  library.  If this is what you want to do, use the GNU Lesser General
  Public License instead of this License.
  */
-int main(int argc, const char * argv[])
+namespace PDP
 {
-    glm::vec2 originalReading(int(86.5),int(86.5));
-    
-    
-    Robotics::Robot currentRobot(originalReading);
-    
-    
-    currentRobot.SetSpeed(5);
-    
-    glm::vec2 zoneA(18,81);
-    glm::vec2 zoneB(43,81);
-    glm::vec2 zoneC(76,81);
-    
-    glm::vec2 binOne(18,37);
-    glm::vec2 binTwo(18,47);
-    glm::vec2 binThree(18,57);
-    glm::vec2 binFour(18,67);
-    
-    glm::vec2 dock(18,5);
-    
-    glm::vec2 tunnel(87,37);
-    
-    glm::vec2 truckDock(71,6);
-    
-    glm::vec2 mapDimensions({96,96});
-    
-    Robotics::Matrix<char> map(mapDimensions.x,mapDimensions.y);
-    
-    
-    //assign the "walls"
-    glm::vec2 wall({80,96});
-    for (int n = 0; n<46; ++n )
+    namespace Physics
     {
-        map[wall.x][wall.y] = 1;
-        wall.y-=1;
+        class RayTracing
+        {
+        private:
+            
+            std::vector<glm::vec3> m_Route;
+            
+            glm::vec2 FindNear(Robotics::Matrix<char> & map, int x, int y, int n) const;
+            bool SetNear(Robotics::Matrix<char> & map, int x, int y, int n) const;
+            bool NearBy(Robotics::Matrix<char> & map, int x, int y, int n, glm::vec2& pt) const;
+            
+        public:
+            
+            bool FindRoute(Robotics::Matrix<char> & map,const glm::vec2 & m_FromCell, const glm::vec2 & m_ToCell);
+            const std::vector<glm::vec3> & GetRoute() const;
+        };
     }
-    
-    Robotics::Navigator currentNavigator(map,currentRobot);
-    
-    currentNavigator.SetDestination({14,0});
-    
-    
-    while (currentNavigator.HasMoreSteps())
-    {
-        
-        currentNavigator.Step(0.11811);
-        
-        std::cout << currentRobot.GetCurrentLocation().x << "," << currentRobot.GetCurrentLocation().y << std::endl;
-    }
-    
-    
-
-    
-    
-
-    
 }
+#endif /* defined(__Foundation__RayTracing__) */

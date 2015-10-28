@@ -1,14 +1,15 @@
 //
-//  main.cpp
+//  Robot.hpp
 //  Robotics Navigation
 //
 //  Created by James Landess on 10/24/15.
 //
 
-#include <iostream>
+#ifndef Robot_hpp
+#define Robot_hpp
 
-#include "Robot.hpp"
-#include "Navigator.hpp"
+#include "Matrix.h"
+#include "Sensor.hpp"
 
 
 /*
@@ -351,61 +352,43 @@
  library.  If this is what you want to do, use the GNU Lesser General
  Public License instead of this License.
  */
-int main(int argc, const char * argv[])
+namespace Robotics
 {
-    glm::vec2 originalReading(int(86.5),int(86.5));
-    
-    
-    Robotics::Robot currentRobot(originalReading);
-    
-    
-    currentRobot.SetSpeed(5);
-    
-    glm::vec2 zoneA(18,81);
-    glm::vec2 zoneB(43,81);
-    glm::vec2 zoneC(76,81);
-    
-    glm::vec2 binOne(18,37);
-    glm::vec2 binTwo(18,47);
-    glm::vec2 binThree(18,57);
-    glm::vec2 binFour(18,67);
-    
-    glm::vec2 dock(18,5);
-    
-    glm::vec2 tunnel(87,37);
-    
-    glm::vec2 truckDock(71,6);
-    
-    glm::vec2 mapDimensions({96,96});
-    
-    Robotics::Matrix<char> map(mapDimensions.x,mapDimensions.y);
-    
-    
-    //assign the "walls"
-    glm::vec2 wall({80,96});
-    for (int n = 0; n<46; ++n )
+    class Robot
     {
-        map[wall.x][wall.y] = 1;
-        wall.y-=1;
-    }
-    
-    Robotics::Navigator currentNavigator(map,currentRobot);
-    
-    currentNavigator.SetDestination({14,0});
-    
-    
-    while (currentNavigator.HasMoreSteps())
-    {
+    private:
+        glm::vec2 CurrentLocation;
+        Robotics::Navigation::Sensor UltrasonicSensors[4];
+        Robotics::Navigation::Sensor InfaredSensors[4];
         
-        currentNavigator.Step(0.11811);
+        float UltrasonicResolution;
+        float InfaredResolution;
+        float Speed;
+    public:
         
-        std::cout << currentRobot.GetCurrentLocation().x << "," << currentRobot.GetCurrentLocation().y << std::endl;
-    }
-    
-    
+        Robot();
+        
+        Robot(const glm::vec2 & location);
+        
+        void SetLocation(const glm::vec2 & location);
+        void SetUltrasonicResolution(const float & resolution);
+        void SetInfaredResolution(const float & resolution);
+        
+        const float & GetUltrasonicResolution() const;
+        const float & GetInfaredResolution() const;
+        
+        Robot & Translate(const glm::vec2 & translation);
+        
+        void SetSpeed(const float & speed);
+        
+        const float & GetSpeed() const;
+        
+        const glm::vec2 & GetCurrentLocation() const;
+        
 
-    
-    
+        
 
-    
+        
+    };
 }
+#endif /* Robot_hpp */

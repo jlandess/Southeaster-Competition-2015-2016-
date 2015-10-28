@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C22DCE5A1BC61BDB00ECA5C8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C22DCE591BC61BDB00ECA5C8 /* main.cpp */; };
 		C22DCE621BC61BEA00ECA5C8 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C22DCE611BC61BEA00ECA5C8 /* Timer.cpp */; };
+		C244A40F1BE0B74000C126BD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C244A4011BE0B74000C126BD /* main.cpp */; settings = {ASSET_TAGS = (); }; };
+		C244A4101BE0B74000C126BD /* Sensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C244A4021BE0B74000C126BD /* Sensor.cpp */; settings = {ASSET_TAGS = (); }; };
+		C244A4111BE0B74000C126BD /* Robot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C244A4071BE0B74000C126BD /* Robot.cpp */; settings = {ASSET_TAGS = (); }; };
+		C244A4121BE0B74000C126BD /* ExternalAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C244A4091BE0B74000C126BD /* ExternalAPI.cpp */; settings = {ASSET_TAGS = (); }; };
+		C244A4131BE0B74000C126BD /* Navigator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C244A40B1BE0B74000C126BD /* Navigator.cpp */; settings = {ASSET_TAGS = (); }; };
+		C244A4141BE0B74000C126BD /* RayTracing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C244A40D1BE0B74000C126BD /* RayTracing.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +30,24 @@
 
 /* Begin PBXFileReference section */
 		C22DCE561BC61BDB00ECA5C8 /* Southeaster-Competition-2015-2016 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Southeaster-Competition-2015-2016"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C22DCE591BC61BDB00ECA5C8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C22DCE601BC61BEA00ECA5C8 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		C22DCE611BC61BEA00ECA5C8 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		C22DCE631BC829C900ECA5C8 /* Curve.cs */ = {isa = PBXFileReference; lastKnownFileType = text; path = Curve.cs; sourceTree = "<group>"; };
+		C244A4011BE0B74000C126BD /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C244A4021BE0B74000C126BD /* Sensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sensor.cpp; sourceTree = "<group>"; };
+		C244A4031BE0B74000C126BD /* Bezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bezier.h; sourceTree = "<group>"; };
+		C244A4041BE0B74000C126BD /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		C244A4051BE0B74000C126BD /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		C244A4061BE0B74000C126BD /* Sensor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sensor.hpp; sourceTree = "<group>"; };
+		C244A4071BE0B74000C126BD /* Robot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Robot.cpp; sourceTree = "<group>"; };
+		C244A4081BE0B74000C126BD /* Robot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Robot.hpp; sourceTree = "<group>"; };
+		C244A4091BE0B74000C126BD /* ExternalAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExternalAPI.cpp; sourceTree = "<group>"; };
+		C244A40A1BE0B74000C126BD /* ExternalAPI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExternalAPI.hpp; sourceTree = "<group>"; };
+		C244A40B1BE0B74000C126BD /* Navigator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Navigator.cpp; sourceTree = "<group>"; };
+		C244A40C1BE0B74000C126BD /* Navigator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Navigator.hpp; sourceTree = "<group>"; };
+		C244A40D1BE0B74000C126BD /* RayTracing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RayTracing.cpp; sourceTree = "<group>"; };
+		C244A40E1BE0B74000C126BD /* RayTracing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RayTracing.h; sourceTree = "<group>"; };
+		C244A4151BE0B74B00C126BD /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +80,24 @@
 		C22DCE581BC61BDB00ECA5C8 /* Southeaster-Competition-2015-2016 */ = {
 			isa = PBXGroup;
 			children = (
+				C244A4151BE0B74B00C126BD /* glm */,
+				C244A4011BE0B74000C126BD /* main.cpp */,
+				C244A4021BE0B74000C126BD /* Sensor.cpp */,
+				C244A4031BE0B74000C126BD /* Bezier.h */,
+				C244A4041BE0B74000C126BD /* Utility.h */,
+				C244A4051BE0B74000C126BD /* Matrix.h */,
+				C244A4061BE0B74000C126BD /* Sensor.hpp */,
+				C244A4071BE0B74000C126BD /* Robot.cpp */,
+				C244A4081BE0B74000C126BD /* Robot.hpp */,
+				C244A4091BE0B74000C126BD /* ExternalAPI.cpp */,
+				C244A40A1BE0B74000C126BD /* ExternalAPI.hpp */,
+				C244A40B1BE0B74000C126BD /* Navigator.cpp */,
+				C244A40C1BE0B74000C126BD /* Navigator.hpp */,
+				C244A40D1BE0B74000C126BD /* RayTracing.cpp */,
+				C244A40E1BE0B74000C126BD /* RayTracing.h */,
 				C22DCE601BC61BEA00ECA5C8 /* Timer.h */,
 				C22DCE631BC829C900ECA5C8 /* Curve.cs */,
 				C22DCE611BC61BEA00ECA5C8 /* Timer.cpp */,
-				C22DCE591BC61BDB00ECA5C8 /* main.cpp */,
 			);
 			path = "Southeaster-Competition-2015-2016";
 			sourceTree = "<group>";
@@ -125,8 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C22DCE5A1BC61BDB00ECA5C8 /* main.cpp in Sources */,
+				C244A4141BE0B74000C126BD /* RayTracing.cpp in Sources */,
+				C244A4111BE0B74000C126BD /* Robot.cpp in Sources */,
+				C244A40F1BE0B74000C126BD /* main.cpp in Sources */,
 				C22DCE621BC61BEA00ECA5C8 /* Timer.cpp in Sources */,
+				C244A4101BE0B74000C126BD /* Sensor.cpp in Sources */,
+				C244A4121BE0B74000C126BD /* ExternalAPI.cpp in Sources */,
+				C244A4131BE0B74000C126BD /* Navigator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +278,7 @@
 				C22DCE5F1BC61BDB00ECA5C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
